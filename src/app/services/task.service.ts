@@ -10,19 +10,17 @@ export class TaskService {
     let x = JSON.parse(localStorage.getItem('tasks')) as task[];
     if(x != null)
       this.tasks = x;
-    // console.log(this.tasks)
   }
-  tasks
+  tasks;
   getall(){
     return this.tasks;
   }
-  filter(rb){
-    // alert(this.rb)
-    if(rb === 'all')
+  filter(radiobutton){
+    if(radiobutton === 'all')
       this.tasks = this.tasks;
-    if(rb === 'true')
+    if(radiobutton === 'true')
       this.tasks =  this.tasks.filter((val)=>{return val.status === 'completed'})
-    if(rb === 'false')
+    if(radiobutton === 'false')
       this.tasks =  this.tasks.filter((val)=>{return val.status === 'uncomplete'})
   }
 }
