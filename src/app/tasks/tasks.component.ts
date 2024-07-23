@@ -89,7 +89,6 @@ export class TasksComponent {
       this.errormessage = 'task is due today';
       return true;
     }
-    return false;
   }
   selectedTask: any | null = null;
   toggleDetails(t:task){
