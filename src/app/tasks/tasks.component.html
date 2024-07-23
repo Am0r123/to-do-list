@@ -1,0 +1,65 @@
+<div id="div1">
+    <form [formGroup]="form" (ngSubmit)="onsubmit()" class="form-container">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input id="title" formControlName="title" class="form-control">
+        <div *ngIf="form.get('title').invalid && form.get('title').touched">
+          <div class="err">Invalid Title</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="details">Details:</label>
+        <input id="details" formControlName="details" class="form-control">
+        <div *ngIf="form.get('details').invalid && form.get('details').touched">
+          <div class="err">Invalid details</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="due">Due:</label>
+        <input id="due" type="date" [min]="mindate" formControlName="due" class="form-control">
+        <div *ngIf="form.get('due').invalid && form.get('due').touched">
+          <div class="err">Invalid Due Date</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="checkbox" id="status" formControlName="status" class="form-control-checkbox">
+      </div>
+      <button type="submit" [disabled]="form.invalid" class="btn-submit">Submit Task</button>
+    </form>
+    
+    <div style="display: grid;">
+      <div *ngFor="let x of filteredtask; let i = index" class="task-container">
+        <div class="task">
+          <p class="task-title">Title:</p>{{x.title}}
+          <div style="display: grid;">
+          <p class="task-status">Due: {{x.due}}</p>
+          <p class="err" *ngIf="checkdate(x)">{{errmes}}</p>
+          </div>
+          <p class="task-status" [ngClass]="{'done' : x.status==='completed','no': x.status==='uncomplete'}">{{x.status}}</p>
+          
+          <!-- <button (click)="toggleDetails(x)" class="btn-details">
+            {{ selectedTask === x ? 'Hide Details' : 'Show Details' }}
+          </button>
+          <div *ngIf="selectedTask === x" class="task-details">
+            <p class="det">Details: {{x.details}}</p>
+          </div> -->
+
+
+          <button (click)="toggleDetails(x)" class="btn btn-primary">Details</button>
+          <div *ngIf="selectedTask" class="popup" [class.show]="isPopupVisible">
+            <div class="popup-content">
+              <button (click)="toggleDetails(x)" class="close-btn">&times;</button>
+              <h2>{{selectedTask.title}}</h2>
+              <p>Details:{{selectedTask.details}}</p>
+              <p>Due:{{selectedTask.due}}</p>
+              <p>Status:{{selectedTask.status}}</p>
+            </div>
+          </div>
+
+          <button (click)="del(i)" class="btn-delete">Delete</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
