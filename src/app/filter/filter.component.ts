@@ -15,9 +15,9 @@ export class FilterComponent {
   @Output()
   selectedradiobtnchanged: EventEmitter<string> = new EventEmitter<string>();
   
-  taskser:TaskService=inject(TaskService);
+  taskservice:TaskService=inject(TaskService);
   onselectedradiobtnchanged(){
     this.selectedradiobtnchanged.emit(this.selectedradiobtn);
-    this.taskser.filter(this.selectedradiobtn);
+    this.taskservice.filter(this.selectedradiobtn);
   }
 }
