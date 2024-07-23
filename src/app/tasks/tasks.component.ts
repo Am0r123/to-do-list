@@ -17,7 +17,7 @@ export class TasksComponent {
   tasks:task[] = [];
   filteredtask:task[] = [];
   @Input()
-  rb
+  radiobutton;
   mindate
   form: FormGroup=new FormGroup({
     title: new FormControl(null,Validators.required),
@@ -30,8 +30,7 @@ export class TasksComponent {
     let x = JSON.parse(localStorage.getItem('tasks')) as task[];
     if(x != null)
       this.tasks = x;
-
-    // Set the minimum date to today
+    
     const today = new Date();
     const day = ('0' + today.getDate()).slice(-2);
     const month = ('0' + (today.getMonth() + 1)).slice(-2);
@@ -39,14 +38,11 @@ export class TasksComponent {
     this.mindate = `${year}-${month}-${day}`;
   }
   onsubmit(){
-    // console.log(this.form);
     console.log(this.form.get('title').value);
     let x=this.form.get('title').value;
     let y=this.form.get('details').value;
     let z=this.form.get('status').value;
     let m=this.form.get('due').value;
-    console.log(m);
-    // console.log(z);
     if(z === true)
       z='completed';
     else
@@ -60,29 +56,28 @@ export class TasksComponent {
     localStorage.setItem('tasks',v);
     this.filteredtask = this.tasks;
   }
-  del(index){
+  delete(index:number){
     this.tasks.splice(index, 1);
     const v = JSON.stringify(this.tasks);
     localStorage.setItem('tasks',v);
     this.filteredtask = this.tasks;
   }
   ngDoCheck(){
-    // alert(this.rb)
-    if(this.rb === 'all')
+    if(this.radiobutton === 'all')
       this.filteredtask = this.tasks;
-    if(this.rb === 'true')
+    if(this.radiobutton === 'true')
       this.filteredtask =  this.tasks.filter((val)=>{return val.status === 'completed'})
-    if(this.rb === 'false')
+    if(this.radiobutton === 'false')
       this.filteredtask =  this.tasks.filter((val)=>{return val.status === 'uncomplete'})
   }
-  errmes:string;
+  errormessage:string;
   checkdate(x:task)
   {
     let today = new Date(this.mindate);
     let n = new Date(x.due);
     if(x.due < this.mindate)
     {
-      this.errmes = 'task is already due';
+      this.errormessage = 'task is already due';
       return true;
     }
     if(x.due > this.mindate)
@@ -91,7 +86,7 @@ export class TasksComponent {
     }
     if(x.due === this.mindate)
     {
-      this.errmes = 'task is due today';
+      this.errormessage = 'task is due today';
       return true;
     }
     return false;
@@ -99,12 +94,7 @@ export class TasksComponent {
   selectedTask: any | null = null;
   toggleDetails(t:task){
     this.isPopupVisible = !this.isPopupVisible;
-    // if(this.selectedTask === t)
-    //   this.selectedTask = null;
-    // else
     this.selectedTask = t;
   }
-
-
-  isPopupVisible = false;
+isPopupVisible = false;
 }

@@ -34,17 +34,10 @@
           <p class="task-title">Title:</p>{{x.title}}
           <div style="display: grid;">
           <p class="task-status">Due: {{x.due}}</p>
-          <p class="err" *ngIf="checkdate(x)">{{errmes}}</p>
+          <p class="err" *ngIf="checkdate(x)">{{errormessage}}</p>
           </div>
           <p class="task-status" [ngClass]="{'done' : x.status==='completed','no': x.status==='uncomplete'}">{{x.status}}</p>
           
-          <!-- <button (click)="toggleDetails(x)" class="btn-details">
-            {{ selectedTask === x ? 'Hide Details' : 'Show Details' }}
-          </button>
-          <div *ngIf="selectedTask === x" class="task-details">
-            <p class="det">Details: {{x.details}}</p>
-          </div> -->
-
 
           <button (click)="toggleDetails(x)" class="btn btn-primary">Details</button>
           <div *ngIf="selectedTask" class="popup" [class.show]="isPopupVisible">
@@ -57,7 +50,7 @@
             </div>
           </div>
 
-          <button (click)="del(i)" class="btn-delete">Delete</button>
+          <button (click)="delete(i)" class="btn-delete">Delete</button>
           
         </div>
       </div>
