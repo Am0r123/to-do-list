@@ -80,11 +80,11 @@ export class TasksComponent {
       this.errormessage = 'task is already due';
       return true;
     }
-    if(x.due > this.mindate)
+    else if(x.due > this.mindate)
     {
       return false;
     }
-    if(x.due === this.mindate)
+    else
     {
       this.errormessage = 'task is due today';
       return true;
