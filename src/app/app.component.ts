@@ -12,6 +12,5 @@ export class AppComponent {
   selectedradiobtn : string ='all';
   onfilterchanged(value :string){
     this.selectedradiobtn = value;
-    console.log(value)
   }
 }
