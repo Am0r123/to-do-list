@@ -18,9 +18,9 @@ export class TaskService {
   filter(radiobutton){
     if(radiobutton === 'all')
       this.tasks = this.tasks;
-    if(radiobutton === 'true')
+    else if(radiobutton === 'true')
       this.tasks =  this.tasks.filter((val)=>{return val.status === 'completed'})
-    if(radiobutton === 'false')
+    else
       this.tasks =  this.tasks.filter((val)=>{return val.status === 'uncomplete'})
   }
 }
