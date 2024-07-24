@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "To-Do-List": {
+    "translate": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/to-do-list",
+            "outputPath": "dist/translate",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -21,10 +21,7 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
+              "src/assets"
             ],
             "styles": [
               "src/styles.css"
@@ -59,10 +56,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "To-Do-List:build:production"
+              "buildTarget": "translate:build:production"
             },
             "development": {
-              "buildTarget": "To-Do-List:build:development"
+              "buildTarget": "translate:build:development"
             }
           },
           "defaultConfiguration": "development"
