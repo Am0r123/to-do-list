@@ -4,11 +4,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { RouterOutlet } from '@angular/router';
 import { task } from '../../Models/task';
 import { TaskService } from '../services/task.service';
-
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,ReactiveFormsModule],
+  imports: [RouterOutlet,CommonModule,ReactiveFormsModule,TranslateModule],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
@@ -96,4 +96,17 @@ export class TasksComponent {
     this.selectedTask = t;
   }
 isPopupVisible = false;
+
+
+  languages = ['ar','en','sp'];
+  private translateservice = inject(TranslateService);
+  ngOnInit(){
+    const defaultlanguage = localStorage.getItem('language') || 'en';
+    this.translateservice.setDefaultLang(defaultlanguage);
+    this.translateservice.use(defaultlanguage);
+  }
+  changelanguage(language:string){
+    this.translateservice.use(language);
+    localStorage.setItem('language',language);
+  }
 }
