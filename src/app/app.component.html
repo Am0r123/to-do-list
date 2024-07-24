@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <h1>To Do List</h1>
+  <h1>{{'To Do List' | translate}}</h1>
+  <div id="language">
+    <select (change)="onSelectionChange($event)">
+      <option *ngFor="let language of languages" [value]="language">{{ language | translate }}</option>
+    </select>
+  </div>
   <filter (selectedradiobtnchanged)="onfilterchanged($event)"></filter>
   <app-tasks [radiobutton]="selectedradiobtn"></app-tasks>
 </body>
