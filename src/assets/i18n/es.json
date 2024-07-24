@@ -1,0 +1,20 @@
+{
+    "language":"Inglés",
+    "ar":"Arábica",
+    "en":"Inglés",
+    "es":"español",
+    "To Do List":"Lista de quehaceres",
+    "HELLO": "Hola",
+
+    "all":"todo",
+    "completed":"terminado",
+    "uncomplete":"incompleto",
+    "Title":"Título",
+    "Details":"detalles",
+    "Due":"pendiente",
+    "Status":"estado",
+    "Submit Task":"enviar tarea",
+    "Delete":"borrar",
+    "task is already due":"la tarea ya está vencida",
+    "task is due today":"la tarea vence hoy"
+}

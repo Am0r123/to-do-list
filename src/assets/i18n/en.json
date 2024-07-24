@@ -1,0 +1,19 @@
+{
+    "language":"English",
+    "ar":"Arabic",
+    "en":"English",
+    "es":"Spainish",
+    "To Do List":"To Do List",
+    "hello":"hello",
+    "all":"all",
+    "completed":"completed",
+    "uncomplete":"uncomplete",
+    "Title":"Title",
+    "Details":"Details",
+    "Due":"Due",    
+    "Status":"Status",
+    "Submit Task":"Submit Task",
+    "Delete":"delete",
+    "task is already due":"task is already due",
+    "task is due today":"task is due today"
+}
